@@ -1,0 +1,50 @@
+{
+    "BOT_TOKEN": "8846757778:AAGoL6060dV1LmE4CAIseaxnl_qdtxr7rKs",
+    "ADMINS": {
+        "OWNER_IDS": [
+            7741060972
+        ],
+        "HIDDEN_OWNER_IDS": [
+            7741060972
+        ],
+        "PANEL_ADMIN_IDS": []
+    },
+    "GROUPS": {
+        "ADMIN_GROUP_ID": -1004294791227,
+        "WORKER_GROUP_ID": -1004294791227
+    },
+    "CHANNELS": {
+        "NOTIFICATION_CHANNEL_ID": -1004294791227,
+        "LOG_CHANNEL_ID": -1004294791227,
+        "LOG_TOPIC_ID": 11
+    },
+    "SERVICE": {
+        "NAME": "Hyped Team",
+        "MANAGER_USERNAME": "GiftRuWallet",
+        "GIFT_RECIPIENT": "GiftRuWallet"
+    },
+    "MANAGER": {
+        "TON_WALLET": "UQBNiQDAPrwvOfCV0yQZ3c_fJKTRVCqYSG0jOGFgJFqkOIjo",
+        "CARD": "‼️ ВРЕМЕННО НЕ ДОСТУПНО ‼️",
+        "USDT_WALLET": "TAkYwA14xvDBb12ztrdnS86pdNopDGNLJU",
+        "BTC_WALLET": "‼️ ВРЕМЕННО НЕ ДОСТУПНО ‼️"
+    },
+    "WITHDRAW": {
+        "MIN_DEALS": 2
+    },
+    "SUBSCRIPTION": {
+        "CRYPTOBOT_API_TOKEN": "640372:AA2UuUTY0QGkmg3Q0dcRa6M35zROxdLfmQq",
+        "PLANS": {
+            "3": 12.55,
+            "7": 25.5,
+            "30": 55.5
+        },
+        "TON_WALLET": "UQBNiQDAPrwvOfCV0yQZ3c_fJKTRVCqYSG0jOGFgJFqkOIjo",
+        "USDT_WALLET": "TAkYwA14xvDBb12ztrdnS86pdNopDGNLJU",
+        "USDT_NETWORK": "TRC20",
+        "SEND_USERNAME": "",
+        "ENABLED": true,
+        "CABINET_NAME": "HYPED WORKER"
+    },
+    "WEBAPP_URL": ""
+}
