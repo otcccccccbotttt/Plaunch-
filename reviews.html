@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#080a10">
+<title>Отзывы — OTCFUNPAY</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{
+  --bg:#080a10;--card:#111620;--card2:#151b27;--text:#f7f8fc;--muted:#8e98aa;
+  --accent:#6d5dfc;--accent2:#9b8cff;--line:rgba(255,255,255,.075);--gold:#ffc857;
+  --green:#58e6a4;--shadow:0 22px 70px rgba(0,0,0,.35)
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:
+  radial-gradient(650px 330px at 10% -8%,rgba(109,93,252,.34),transparent 68%),
+  radial-gradient(500px 300px at 100% 8%,rgba(81,140,255,.14),transparent 68%),
+  linear-gradient(180deg,#080a10 0%,#0a0d14 55%,#080a10 100%);
+  color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  min-height:100vh;overflow-x:hidden
+}
+body:before,body:after{content:"";position:fixed;z-index:-1;border-radius:50%;filter:blur(60px);pointer-events:none;opacity:.35;animation:float 9s ease-in-out infinite alternate}
+body:before{width:180px;height:180px;background:#6d5dfc;top:22%;left:-110px}
+body:after{width:160px;height:160px;background:#2f7bff;right:-100px;top:62%;animation-delay:-4s}
+button,input,textarea{font:inherit}button{border:0;cursor:pointer;color:inherit}
+.wrap{width:min(720px,100%);margin:0 auto;padding:16px 14px calc(34px + env(safe-area-inset-bottom))}
+.hero{position:relative;overflow:hidden;padding:20px 18px;border:1px solid var(--line);border-radius:26px;background:linear-gradient(145deg,rgba(109,93,252,.23),rgba(17,22,32,.96));box-shadow:var(--shadow);animation:heroIn .65s cubic-bezier(.2,.8,.2,1) both}
+.hero:before{content:"";position:absolute;width:210px;height:210px;right:-100px;top:-110px;border-radius:50%;background:rgba(155,140,255,.18);filter:blur(8px);animation:pulse 4s ease-in-out infinite}
+.brand{position:relative;display:flex;align-items:center;gap:12px;z-index:1}
+.logo{width:52px;height:52px;border-radius:17px;object-fit:cover;background:linear-gradient(135deg,#6d5dfc,#a894ff);display:block;box-shadow:0 12px 34px rgba(109,93,252,.38);animation:logoIn .75s .08s both}
+.logoFallback{display:grid;place-items:center;font-weight:900;font-size:21px}
+h1{font-size:25px;line-height:1.05;margin:0;letter-spacing:-.5px}.sub{color:var(--muted);font-size:13px;margin-top:5px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px;position:relative;z-index:1}
+.stat{background:rgba(255,255,255,.055);border:1px solid var(--line);border-radius:17px;padding:12px 9px;text-align:center;backdrop-filter:blur(10px);animation:rise .55s both}.stat:nth-child(2){animation-delay:.07s}.stat:nth-child(3){animation-delay:.14s}
+.stat b{display:block;font-size:18px}.stat span{font-size:11px;color:var(--muted)}
+.toolbar{display:flex;gap:9px;margin:14px 0}.toolbar button,.primary{flex:1;padding:12px 14px;border-radius:15px;background:var(--card);color:var(--text);border:1px solid var(--line);font-weight:750;transition:transform .18s ease,box-shadow .18s ease,background .18s ease}.toolbar button:active,.primary:active,.actions button:active{transform:scale(.97)}
+.primary{background:linear-gradient(135deg,var(--accent),var(--accent2));border:0;box-shadow:0 12px 30px rgba(109,93,252,.25)}
+.toolbar button:hover{background:#171d2a;transform:translateY(-1px)}.primary:hover{transform:translateY(-1px);box-shadow:0 16px 36px rgba(109,93,252,.34)}
+.reviews{display:grid;gap:10px}
+.review{position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(23,28,40,.98),rgba(16,21,31,.98));border:1px solid var(--line);border-radius:21px;padding:15px;box-shadow:0 12px 38px rgba(0,0,0,.14);animation:cardIn .5s cubic-bezier(.2,.8,.2,1) both;transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease}
+.review:before{content:"";position:absolute;left:-80px;top:0;width:80px;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.055),transparent);transform:skewX(-18deg);animation:shine 5s ease-in-out infinite}
+.review:hover{transform:translateY(-2px);border-color:rgba(155,140,255,.22);box-shadow:0 18px 48px rgba(0,0,0,.22)}
+.top{display:flex;align-items:center;gap:11px}.avatar{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#242b3b,#11151e);display:grid;place-items:center;font-weight:850;overflow:hidden;flex:0 0 auto;border:1px solid rgba(255,255,255,.08)}.avatar img{width:100%;height:100%;object-fit:cover;display:block}.who{flex:1;min-width:0}.name{font-weight:800;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.date{font-size:11px;color:var(--muted);margin-top:3px}.stars{color:var(--gold);letter-spacing:1px;font-size:13px;white-space:nowrap}.body{font-size:14px;line-height:1.5;margin-top:12px;color:#e9ecf3;white-space:pre-wrap}.verified{display:inline-flex;align-items:center;gap:4px;font-size:10px;color:#8e86ff;background:rgba(109,93,252,.12);border:1px solid rgba(109,93,252,.15);padding:3px 7px;border-radius:999px;margin-left:5px;vertical-align:1px}
+.empty{padding:35px 18px;text-align:center;color:var(--muted);background:var(--card);border-radius:20px;border:1px solid var(--line)}.loader{text-align:center;padding:22px;color:var(--muted)}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.68);backdrop-filter:blur(10px);display:none;align-items:flex-end;justify-content:center;padding:12px;z-index:20}.modal.show{display:flex;animation:fadeIn .2s ease}.sheet{width:min(720px,100%);background:linear-gradient(180deg,#141a26,#0f141d);border:1px solid var(--line);border-radius:25px 25px 18px 18px;padding:18px;box-shadow:0 -20px 70px rgba(0,0,0,.48);animation:sheetIn .32s cubic-bezier(.2,.8,.2,1)}.sheet h2{margin:0 0 14px}.field{margin:10px 0}.field label{display:block;font-size:12px;color:var(--muted);margin:0 0 7px}.field textarea{width:100%;min-height:125px;resize:none;border:1px solid var(--line);border-radius:15px;background:#0a0e15;color:var(--text);padding:12px;outline:none;transition:border-color .18s,box-shadow .18s}.field textarea:focus{border-color:rgba(109,93,252,.7);box-shadow:0 0 0 4px rgba(109,93,252,.12)}.rating{display:flex;gap:7px}.rating button{width:42px;height:42px;border-radius:12px;background:#1a2030;color:#667084;font-size:20px;transition:transform .18s,color .18s,background .18s}.rating button:hover{transform:translateY(-2px)}.rating button.on{color:var(--gold);background:rgba(255,200,87,.12);animation:starPop .22s ease}.actions{display:flex;gap:8px;margin-top:14px}.actions button{flex:1;padding:12px;border-radius:14px;background:#1a2030}.hint{font-size:11px;color:var(--muted);margin-top:7px}.reviewActions{display:flex;gap:7px;margin-top:12px}.reviewActions button{padding:8px 11px;border-radius:11px;background:#1a2030;color:#dce1eb;border:1px solid var(--line);font-size:12px;font-weight:700}.reviewActions .danger{color:#ff8d9a}.reviewActions button:hover{transform:translateY(-1px)}
+@keyframes heroIn{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}@keyframes logoIn{from{opacity:0;transform:scale(.7) rotate(-8deg)}to{opacity:1;transform:none}}@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}@keyframes cardIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}@keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes sheetIn{from{opacity:0;transform:translateY(35px)}to{opacity:1;transform:none}}@keyframes starPop{50%{transform:scale(1.12)}}@keyframes pulse{50%{transform:scale(1.12);opacity:.65}}@keyframes float{to{transform:translate3d(25px,-18px,0)}}@keyframes shine{0%,55%{transform:translateX(-150px) skewX(-18deg)}75%,100%{transform:translateX(850px) skewX(-18deg)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <div class="brand">
+      <img id="botLogo" class="logo" src="/api/bot-avatar" alt="" onerror="this.replaceWith(Object.assign(document.createElement('div'),{className:'logo logoFallback',textContent:'OTC'}))">
+      <div><h1>Отзывы</h1><div class="sub">Что говорят пользователи о сделках</div></div>
+    </div>
+    <div class="stats"><div class="stat"><b id="count">—</b><span>отзывов</span></div><div class="stat"><b id="rating">—</b><span>средняя оценка</span></div><div class="stat"><b>24/7</b><span>сделки</span></div></div>
+  </section>
+  <div class="toolbar"><button id="refresh">↻ Обновить</button><button class="primary" id="write">✦ Оставить отзыв</button></div>
+  <div id="reviews" class="reviews"><div class="loader">Загрузка отзывов…</div></div>
+</div>
+<div class="modal" id="modal"><div class="sheet"><h2 id="modalTitle">Оставить отзыв</h2><div class="field"><label>Оценка</label><div class="rating" id="ratingBtns"></div></div><div class="field"><label>Ваш отзыв</label><textarea id="text" maxlength="1000" placeholder="Расскажите о своём опыте…"></textarea><div class="hint">До 1000 символов</div></div><div class="actions"><button id="cancel">Отмена</button><button class="primary" id="send">Опубликовать</button></div></div></div>
+<script>const tg=window.Telegram?.WebApp;if(tg){tg.ready();tg.expand();try{tg.setHeaderColor('#080a10');tg.setBackgroundColor('#080a10')}catch(e){}}
+const $=id=>document.getElementById(id);let selected=5,editingId=null,lastData={mine_ids:[],viewer_is_admin:false};
+function stars(n){n=Math.max(0,Math.min(5,Number(n)||0));return '★'.repeat(n)+'☆'.repeat(5-n)}
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+function avatar(){return '👤'}
+function fmtDate(v){let n=Number(v);let d=new Date(Number.isFinite(n)?(n<100000000000?n*1000:n):v);if(isNaN(d))return 'Дата неизвестна';return d.toLocaleDateString('ru-RU',{day:'2-digit',month:'short',year:'numeric'})}
+function render(data){lastData=data||{};$('count').textContent=data.total;$('rating').textContent=Number(data.avg||0).toFixed(1);const mine=new Set(data.mine_ids||[]);const admin=!!data.viewer_is_admin;const worker=!!data.viewer_is_worker;const box=$('reviews');if(!data.items?.length){box.innerHTML='<div class="empty">Пока у вас нет отзывов.<br>Оставьте первый ✦</div>';return}box.innerHTML=data.items.map((r,i)=>{const id=Number(r.id);const own=mine.has(id);const canEdit=own&&!r.seed_key;const canDelete=own||admin;let actions='';if(canEdit)actions+='<button data-edit="'+id+'">✎ Изменить</button>';if(canDelete)actions+='<button class="danger" data-delete="'+id+'">Удалить</button>';return `<article class="review" style="animation-delay:${Math.min(i*35,420)}ms"><div class="top"><div class="avatar">${avatar()}</div><div class="who"><div class="name">Пользователь</div><div class="date">${fmtDate(r.created_at)}</div></div><div class="stars">${stars(r.rating)}</div></div><div class="body">${esc(r.text)}</div>${actions?`<div class="reviewActions">${actions}</div>`:''}</article>`}).join('')}
+async function load(){try{const init=tg?.initData||'';const res=await fetch('/api/reviews?limit=500&initData='+encodeURIComponent(init),{cache:'no-store'});const data=await res.json();if(!res.ok)throw new Error();render(data)}catch(e){$('reviews').innerHTML='<div class="empty">Не удалось загрузить отзывы.<br>Попробуйте обновить.</div>'}}
+function openModal(id=null){editingId=id?Number(id):null;const r=editingId?lastData.items.find(x=>Number(x.id)===editingId):null;selected=r?Number(r.rating):5;$('modalTitle').textContent=editingId?'Изменить отзыв':'Оставить отзыв';$('text').value=r?.text||'';$('send').textContent=editingId?'Сохранить':'Опубликовать';drawRating();$('modal').classList.add('show')}
+function closeModal(){$('modal').classList.remove('show');editingId=null}
+function drawRating(){const box=$('ratingBtns');box.innerHTML='';for(let i=1;i<=5;i++){const b=document.createElement('button');b.textContent='★';b.className=i<=selected?'on':'';b.onclick=()=>{selected=i;drawRating()};box.appendChild(b)}}
+$('write').onclick=()=>openModal();$('cancel').onclick=closeModal;$('refresh').onclick=load;$('modal').onclick=e=>{if(e.target.id==='modal')closeModal()};
+$('reviews').addEventListener('click',async e=>{const edit=e.target.closest('[data-edit]');const del=e.target.closest('[data-delete]');if(edit){openModal(edit.dataset.edit);return}if(del){const id=Number(del.dataset.delete);if(!confirm('Удалить этот отзыв?'))return;try{const res=await fetch('/api/reviews/delete',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({initData:tg?.initData||'',id})});const data=await res.json();if(!res.ok)throw new Error(data.error||'Ошибка');render(data);tg?.HapticFeedback?.notificationOccurred?.('success')}catch(err){tg?.showAlert?.(err.message||'Не удалось удалить отзыв')}}});
+$('send').onclick=async()=>{const text=$('text').value.trim();if(!text){tg?.showAlert?.('Напишите отзыв');return}if(!tg?.initData){tg?.showAlert?.('Откройте отзывы из Telegram');return}const btn=$('send');btn.disabled=true;try{const endpoint=editingId?'/api/reviews/edit':'/api/reviews';const body={initData:tg.initData,rating:selected,text};if(editingId)body.id=editingId;const res=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const data=await res.json();if(!res.ok)throw new Error(data.error||'Ошибка');closeModal();render(data);tg?.HapticFeedback?.notificationOccurred?.('success')}catch(e){tg?.showAlert?.(e.message||'Не удалось сохранить отзыв')}finally{btn.disabled=false}};
+drawRating();load();</script>
+</body></html>
